@@ -9,7 +9,7 @@ Unicode true
 !define APPVERSIONMAJOR 1
 !define APPVERSIONMINOR 1
 !define APPVERSIONBUILD 0
-!define APPVERSIONPATCH 15
+!define APPVERSIONPATCH 1001
 
 Name "${APPNAME}"
 OutFile "app-installer.exe"
