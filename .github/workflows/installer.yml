@@ -30,6 +30,7 @@ jobs:
       - name: Publish release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: ${{ github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
         shell: pwsh
         run: gh release create --title "Release ${{ github.ref_name }}" "${{ github.ref_name }}" "app-installer.exe"
 
