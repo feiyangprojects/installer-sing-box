@@ -8,8 +8,8 @@ Unicode true
 !define APPLICENSE "GPL-3.0-or-later"
 !define APPVERSIONMAJOR 1
 !define APPVERSIONMINOR 1
-!define APPVERSIONBUILD 0
-!define APPVERSIONPATCH 1001
+!define APPVERSIONBUILD 1
+!define APPVERSIONPATCH 1000000
 
 Name "${APPNAME}"
 OutFile "app-installer.exe"
