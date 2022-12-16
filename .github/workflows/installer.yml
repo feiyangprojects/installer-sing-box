@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
@@ -21,6 +21,9 @@ jobs:
         uses: actions/setup-go@v3
         with:
           go-version: ">1.18.0"
+      - name: Setup nsis
+        shell: pwsh
+        run: sudo apt install -y nsis
       - name: Build application
         shell: pwsh
         run: .\app.ps1

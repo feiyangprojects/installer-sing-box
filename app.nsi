@@ -1,8 +1,6 @@
 !include "MUI2.nsh"
 !include "x64.nsh"
 
-Unicode true
-
 !define APPNAME "sing-box"
 !define APPDESCRIPTION "The universal proxy platform."
 !define APPLICENSE "GPL-3.0-or-later"
@@ -10,6 +8,8 @@ Unicode true
 !define APPVERSIONMINOR 1
 !define APPVERSIONBUILD 1
 !define APPVERSIONPATCH 1000000
+
+Target amd64-unicode
 
 Name "${APPNAME}"
 OutFile "app-installer.exe"
@@ -26,13 +26,6 @@ InstallDir "$PROGRAMFILES64\${APPNAME}"
 
 RequestExecutionLevel admin
 
-!macro VerifyMachineIs64Bit
-${IfNot} ${RunningX64}
-    MessageBox MB_ICONEXCLAMATION "Unsupported machine!"
-    SetErrorLevel 10 ;ERROR_BAD_ENVIRONMENT
-    Quit
-${EndIf}
-!macroend
 !macro VerifyUserIsAdmin
 UserInfo::GetAccountType
 pop $0
@@ -61,14 +54,11 @@ ${EndIf}
 
 Function .onInit
     SetShellVarContext all
-    !insertmacro VerifyMachineIs64Bit
     !insertmacro VerifyUserIsAdmin
 FunctionEnd
 
 Section "Install"
     SectionIn RO
-
-    SetRegView 64
 
     SetOutPath "$INSTDIR"
 
@@ -104,9 +94,9 @@ Function un.onInit
     SetShellVarContext all
 
     !insertmacro VerifyUserIsAdmin
-functionEnd
+FunctionEnd
  
-Section "uninstall"
+Section "Uninstall"
     SetRegView 64
 
     RMDir /R "$SMPROGRAMS\${APPNAME}"
