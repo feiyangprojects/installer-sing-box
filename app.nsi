@@ -75,7 +75,7 @@ Section "Install"
     WriteUninstaller "Uninstall.exe"
 
     CreateDirectory "$SMPROGRAMS\${APPNAME}"
-    CreateShortCut "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk" "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" "-NoExit -Command $$env:PATH += '$INSTDIR'; sing-box"
+    CreateShortCut "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk" "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" "-NoExit -Command $$env:PATH += ';$INSTDIR'; sing-box"
     CreateShortCut "$SMPROGRAMS\${APPNAME}\Uninstall ${APPNAME}.lnk" "$INSTDIR\Uninstall.exe"
 
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayName" "${APPNAME}"
