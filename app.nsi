@@ -6,7 +6,7 @@
 !define APPLICENSE "GPL-3.0-or-later"
 !define APPVERSIONMAJOR 1
 !define APPVERSIONMINOR 1
-!define APPVERSIONBUILD 1
+!define APPVERSIONBUILD 2
 !define APPVERSIONPATCH 1000000
 
 Target amd64-unicode
