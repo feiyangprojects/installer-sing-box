@@ -1,6 +1,16 @@
 !include "MUI2.nsh"
 !include "x64.nsh"
 
+!macro VerifyUserIsAdmin
+UserInfo::GetAccountType
+pop $0
+${If} $0 != "admin"
+    MessageBox MB_ICONEXCLAMATION "Administrator rights required!"
+    SetErrorLevel 740 ;ERROR_ELEVATION_REQUIRED
+    Quit
+${EndIf}
+!macroend
+
 !define APPNAME "sing-box"
 !define APPDESCRIPTION "The universal proxy platform."
 !define APPLICENSE "GPL-3.0-or-later"
@@ -25,16 +35,6 @@ VIProductVersion "${APPVERSIONMAJOR}.${APPVERSIONMINOR}.${APPVERSIONBUILD}.${APP
 InstallDir "$PROGRAMFILES64\${APPNAME}"
 
 RequestExecutionLevel admin
-
-!macro VerifyUserIsAdmin
-UserInfo::GetAccountType
-pop $0
-${If} $0 != "admin"
-    MessageBox MB_ICONEXCLAMATION "Administrator rights required!"
-    SetErrorLevel 740 ;ERROR_ELEVATION_REQUIRED
-    Quit
-${EndIf}
-!macroend
 
 !define MUI_ICON "app.ico"
 !define MUI_UNICON "app.ico"
@@ -98,8 +98,6 @@ Function un.onInit
 FunctionEnd
  
 Section "Uninstall"
-    SetRegView 64
-
     RMDir /R "$SMPROGRAMS\${APPNAME}"
 
     RMDir /R "$INSTDIR"
