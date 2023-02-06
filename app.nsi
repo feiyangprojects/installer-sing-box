@@ -19,6 +19,9 @@ ${EndIf}
 !define APPVERSIONBUILD 2
 !define APPVERSIONPATCH 1000000
 
+# Require amd64 stubs to work.
+# If compile nsis from scratch is too complicated for you,
+# it can be obtained from this Debian package : https://packages.debian.org/sid/nsis-common
 Target amd64-unicode
 
 Name "${APPNAME}"
