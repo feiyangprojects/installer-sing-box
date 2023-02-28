@@ -14,6 +14,7 @@ ${EndIf}
 !define APPNAME "sing-box"
 !define APPDESCRIPTION "The universal proxy platform."
 !define APPLICENSE "GPL-3.0-or-later"
+!define APPGUID "{BB81C198-D196-4B4C-B4A8-0CD0B7D10F6B}"
 !define APPVERSIONMAJOR 1
 !define APPVERSIONMINOR 1
 !define APPVERSIONBUILD 5
@@ -81,17 +82,17 @@ Section "Install"
     CreateShortCut "$SMPROGRAMS\${APPNAME}\${APPNAME}.lnk" "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" "-NoExit -Command $$env:PATH += ';$INSTDIR'; sing-box"
     CreateShortCut "$SMPROGRAMS\${APPNAME}\Uninstall ${APPNAME}.lnk" "$INSTDIR\Uninstall.exe"
 
-    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayName" "${APPNAME}"
-    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "UninstallString" "$\"$INSTDIR\Uninstall.exe$\""
-    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "QuietUninstallString" "$\"$INSTDIR\Uninstall.exe$\" /S"
-    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "InstallLocation" "$\"$INSTDIR$\""
+    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPGUID}" "DisplayName" "${APPNAME}"
+    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPGUID}" "UninstallString" "$\"$INSTDIR\Uninstall.exe$\""
+    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPGUID}" "QuietUninstallString" "$\"$INSTDIR\Uninstall.exe$\" /S"
+    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPGUID}" "InstallLocation" "$\"$INSTDIR$\""
 
-    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "DisplayVersion" "${APPVERSIONMAJOR}.${APPVERSIONMINOR}.${APPVERSIONBUILD}.${APPVERSIONPATCH}"
-    WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "VersionMajor" "${APPVERSIONMAJOR}"
-    WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "VersionMinor" "${APPVERSIONMINOR}"
+    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPGUID}" "DisplayVersion" "${APPVERSIONMAJOR}.${APPVERSIONMINOR}.${APPVERSIONBUILD}.${APPVERSIONPATCH}"
+    WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPGUID}" "VersionMajor" "${APPVERSIONMAJOR}"
+    WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPGUID}" "VersionMinor" "${APPVERSIONMINOR}"
     # There is no option for modifying or repairing the install
-    WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "NoModify" 1
-    WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}" "NoRepair" 1
+    WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPGUID}" "NoModify" 1
+    WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPGUID}" "NoRepair" 1
 SectionEnd
 
 Function un.onInit
@@ -105,5 +106,5 @@ Section "Uninstall"
 
     RMDir /R "$INSTDIR"
 
-    DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPNAME}"
+    DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APPGUID}"
 SectionEnd
