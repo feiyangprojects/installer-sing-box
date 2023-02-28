@@ -9,7 +9,7 @@ Invoke-WebRequest -OutFile 'app\geoip.db' -Uri 'https://github.com/SagerNet/sing
 git clone https://github.com/haishanh/yacd.git
 Set-Location -Path 'yacd'
 #Checkout lateat yacd release
-git checkout $(git describe --tags --abbrev=0)
+git checkout $(Get-Content -Path '..\VERSIONS\YACD_VERSION')
 
 yarn install
 yarn build
