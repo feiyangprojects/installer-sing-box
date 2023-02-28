@@ -25,7 +25,7 @@ $env:CGO_ENABLED = '0'
 $env:GOOS = 'windows'
 foreach ($i in 'amd64', 'arm64') {
     $env:GOARCH = $i
-    go build -trimpath -v -o "../app/sing-box-$i.exe" -tags "with_quic,with_grpc,with_wireguard,with_ech,with_utls,with_clash_api,with_gvisor" -ldflags " -X 'github.com/sagernet/sing-box/constant.Commit=$(Get-Content -Path '..\VERSIONS\VERSION')' -w -s -buildid=" ./cmd/sing-box
+    go build -trimpath -v -o "../app/sing-box-$i.exe" -tags "with_quic,with_grpc,with_dhcp,with_wireguard,with_shadowsocksr,with_ech,with_utls,with_reality_server,with_clash_api,with_v2ray_api,with_gvisor" -ldflags " -X 'github.com/sagernet/sing-box/constant.Commit=$(Get-Content -Path '..\VERSIONS\VERSION')' -w -s -buildid=" ./cmd/sing-box
 }
 
 Set-Location -Path '..'
