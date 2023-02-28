@@ -16,9 +16,9 @@ ${EndIf}
 !define APPLICENSE "GPL-3.0-or-later"
 !define APPGUID "{BB81C198-D196-4B4C-B4A8-0CD0B7D10F6B}"
 !define APPVERSIONMAJOR 1
-!define APPVERSIONMINOR 1
-!define APPVERSIONBUILD 5
-!define APPVERSIONPATCH 1000000
+!define APPVERSIONMINOR 2
+!define APPVERSIONBUILD 0
+!define APPVERSIONPATCH 5
 
 # Require amd64 stubs to work.
 # If compile nsis from scratch is too complicated for you,
