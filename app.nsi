@@ -18,7 +18,7 @@ ${EndIf}
 !define APPVERSIONMAJOR 1
 !define APPVERSIONMINOR 2
 !define APPVERSIONBUILD 0
-!define APPVERSIONPATCH 5
+!define APPVERSIONPATCH 1000000
 
 # Require amd64 stubs to work.
 # If compile nsis from scratch is too complicated for you,
